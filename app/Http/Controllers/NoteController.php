@@ -12,11 +12,20 @@ use \Illuminate\Http\Request; // this is essential for http 'post' request - it 
 // 2. define controller class
 class NoteController extends Controller
 {
-    public function getNotes()
+    public function getNotes($author = null)
     {
-        $notes = Note::all();
+        if (!is_null($author)) {
+            $authorExist = Author::where('author_name', $author)->first();
+            if ($authorExist) {
+                $notes = $authorExist->notes()->orderBy('created_at', 'desc')->get();
+            }
+        } else {
+            $notes = Note::orderBy('created_at', 'desc')->get();
+        }
+        // $notes = Note::all();
         return view('notes', ['notes' => $notes]);
     }
+
 
     public function postNote(Request $request)
     {

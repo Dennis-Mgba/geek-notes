@@ -12,7 +12,7 @@
 */
 
 Route::group(['middleware' => ['web']], function() {
-    Route::get('/', [
+    Route::get('/{author?}', [
         'uses' => 'NoteController@getNotes',
         'as' => 'notes'
     ]);
