@@ -118,6 +118,10 @@ body {
     text-align: center;
 }
 
+.add-note {
+    margin-top: 70px;
+}
+
 .note {
     position: relative;
     display: inline-block;

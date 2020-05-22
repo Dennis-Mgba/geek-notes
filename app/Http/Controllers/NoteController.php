@@ -17,10 +17,10 @@ class NoteController extends Controller
         if (!is_null($author)) {
             $authorExist = Author::where('author_name', $author)->first();
             if ($authorExist) {
-                $notes = $authorExist->notes()->orderBy('created_at', 'desc')->get();
+                $notes = $authorExist->notes()->orderBy('created_at', 'desc')->paginate(6);
             }
         } else {
-            $notes = Note::orderBy('created_at', 'desc')->get();
+            $notes = Note::orderBy('created_at', 'desc')->paginate(6);
         }
         // $notes = Note::all();
         return view('notes', ['notes' => $notes]);

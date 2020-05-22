@@ -33,8 +33,13 @@
                 <div class="info">Created by <a href="{{ route('notes', ['author' => $notes[$i]->author->author_name]) }}">{{ $notes[$i]->author->author_name }}</a> {{ $notes[$i]->created_at }} </div> {{--the ->author is the function relationship declared in the note model while author_name is the name of the table in the authors table--}}
             </article>
         @endfor
-        <div class="">
-            pagination
+        <div class="pagination">
+            @if ($notes->currentPage() !== 1)
+                <a href="{{ $notes->previousPageUrl() }}">Prev</a>
+            @endif
+            @if ($notes->currentPage() !== $notes->lastPage() && $notes->hasPages())
+                <a href="{{ $notes->nextPageUrl() }}"> Next</a>
+            @endif
         </div>
     </section>
     <section class="add-note">
