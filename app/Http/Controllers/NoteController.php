@@ -6,6 +6,8 @@ because when laravel get's a request it needs to load all classes need in for th
 namespace App\Http\Controllers;
 use App\Author;
 use App\Note;
+use App\Events\NoteCreated;
+use Illuminate\Support\Facades\Event;
 
 use \Illuminate\Http\Request; // this is essential for http 'post' request - it is an object.
 
@@ -51,6 +53,8 @@ class NoteController extends Controller
         $note->note = $noteText;
         $author->notes()->save($note);   // notes() here is the function relationship declared in the Author model
 
+        // Event::fire(new NoteCreated($author->author_name));  // NoteCreated is the name of the event as stated in the EventServiceProvider file, $author->author_name is the paremeter we are setting forthe argument
+        Event::fire(new NoteCreated($author));
         return redirect()->route('notes')->with([
             'success' => 'Note has been created'
         ]);

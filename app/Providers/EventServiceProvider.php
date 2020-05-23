@@ -13,9 +13,15 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
+    /*  an example of how event and event listerner is set - it should be a string
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
         ],
+    */
+
+    'App\Events\NoteCreated' => [               // event = NoteCreated
+        'App\Listeners\CreatLogEntry',          // listener = CreateLogEntry
+    ],
     ];
 
     /**

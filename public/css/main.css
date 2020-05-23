@@ -48,7 +48,7 @@ body {
 }
 
 .nav > .nav-links > a:hover {
-  color: rgba(0, 0, 0, 0.3);
+  color: #8c8c8c;
 }
 
 .nav > #nav-check {
@@ -305,15 +305,16 @@ body {
 }
 
 .pagination {
-    font-size: 20px;
+    margin-top: 10px;
+    font-size: 15px;
 }
 
 .pagination a {
-    color: #000;
+    color: #0073e6;
     text-decoration: none;
 }
 
 .pagination a:hover,
 .pagination a:active {
-    color: #ccc;
+    color: #004080;
 }
